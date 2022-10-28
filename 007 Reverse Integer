@@ -1,0 +1,59 @@
+/*
+Link: https://leetcode.com/problems/reverse-integer/
+
+Given a signed 32-bit integer x, return x with its digits reversed. 
+If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
+
+Example 1:
+
+Input: x = 123
+Output: 321
+Example 2:
+
+Input: x = -123
+Output: -321
+Example 3:
+
+Input: x = 120
+Output: 21
+ 
+
+Constraints:
+
+-231 <= x <= 231 - 1
+
+-----------------------------------------------------------------------------------
+Solution:
+
+
+*/
+
+var reverse = function(x) {
+    var range =Math.pow(2,31)
+        var rev =0;
+        var rem=0;
+        var flag=true;
+        if(x<0){
+            x=-x;
+            flag=false;
+        }
+        var num=x;
+        while(num>0){
+            rem= num%10;
+            console.log(rem)
+            rev=rev*10+rem;
+            num=Math.trunc(num/10);
+        }
+        if(flag==false){
+            rev=-rev;
+        }
+        if(rev>=range-1 || rev<=-range){
+            return 0;
+        }
+        return rev;
+};
+
+
+
+
